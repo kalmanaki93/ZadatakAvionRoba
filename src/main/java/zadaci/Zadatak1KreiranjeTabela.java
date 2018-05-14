@@ -28,27 +28,28 @@ public class Zadatak1KreiranjeTabela {
         }
 
         try {
-            TableUtils.clearTable(connectionSource, Roba.class);
+            TableUtils.dropTable(connectionSource, Roba.class,true);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         try {
-            TableUtils.clearTable(connectionSource, Avion.class);
+            TableUtils.dropTable(connectionSource, Avion.class,true);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         try {
-            TableUtils.createTable(connectionSource, Roba.class);
-        } catch (SQLException e) {
-            e.printStackTrace();
-
             try {
                 TableUtils.createTable(connectionSource, Avion.class);
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
+            TableUtils.createTable(connectionSource, Roba.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+
         }
 
 
