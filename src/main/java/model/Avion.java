@@ -1,6 +1,8 @@
 package model;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "avion")
@@ -15,6 +17,11 @@ public class Avion {
    @DatabaseField(columnName = POLJE_RASPON_KRILA,canBeNull = false)
     private int rasponKrila;
 
+    @ForeignCollectionField(foreignFieldName = "avion",eager=false,maxEagerLevel = 1)
+    private ForeignCollection<Roba> roba;
+
+
+
    public Avion (){
 
    }
@@ -22,6 +29,7 @@ public class Avion {
    public Avion (String oznaka, int rasponKrila){
        this.oznaka = oznaka;
        this.rasponKrila = rasponKrila;
+
    }
 
     public String getOznaka() {
